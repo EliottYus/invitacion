@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de Boda</title>
+
+  <!-- Fuentes elegantes -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #000000, #500000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .invitation {
+      background: #ffffff;
+      max-width: 750px;
+      width: 90%;
+      padding: 35px 30px;
+      border-radius: 22px;
+      border: 2px solid #d4af37;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      text-align: center;
+      position: relative;
+    }
+
+    /* adornos dorados */
+    .invitation::before,
+    .invitation::after {
+        content: "";
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        pointer-events: none;
+        opacity: 0.85;
+    }
+
+    .invitation::before {
+        top: -1px;
+        left: -1px;
+        background-image: url("doradasarriba.png");
+    }
+
+    .invitation::after {
+        bottom: -20px;
+        right: -1px;
+        background-image: url("doradasabajo.png");
+    }
+
+    .decoracion {
+        width: 450px;
+        height: 30px;
+        margin: 10px auto;
+        display: block;
+        opacity: 0.8;
+    }
+
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #000;
+      font-size: 2.3em;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .intro {
+      font-style: italic;
+      color: #444;
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+
+    h2 {
+      color: #000;
+      font-family: 'Playfair Display', serif;
+      margin: 18px 0 5px;
+    }
+
+    .label {
+      font-weight: 500;
+      color: #000;
+    }
+
+    .placeholder {
+      color: #777;
+      border-bottom: 1px dashed #d4af37;
+      padding: 2px 6px;
+      display: inline-block;
+    }
+
+    /* cronómetro */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .time-box {
+      background: #000;
+      color: #d4af37;
+      padding: 12px 14px;
+      border-radius: 10px;
+      min-width: 70px;
+    }
+
+    .time-box span {
+      display: block;
+      font-size: 1.4em;
+      font-weight: 600;
+    }
+
+    .time-box small {
+      font-size: 0.7em;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .dresscode {
+      background: #000;
+      color: #d4af37;
+      padding: 18px;
+      border-radius: 15px;
+      font-weight: 500;
+      margin-top: 20px;
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    /* toque Roblox */
+    .roblox {
+      font-size: 0.9em;
+      color: #000;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.9em;
+      }
+      .invitation {
+        padding: 25px 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+    <audio src="extra/musicacomun.mp3" autoplay loop muted></audio>
+
+  <div class="invitation">
+
+    <!-- MENSAJE INICIAL -->
+    <p class="intro">
+      El día de hoy, con el corazón lleno de amor, decidimos unir nuestras vidas
+      y comenzar una nueva historia que queremos compartir contigo.
+    </p>
+
+    <h1>INVITACIÓN DE BODA</h1>
+    <div class="roblox">🎮 Broadhaven · Roblox</div>
+
+    <img src="lineadorada.png" class="decoracion">
+
+    <!-- NOMBRES -->
+    <h2>Alejandra</h2>
+    <p>Usuario Roblox: <span class="placeholder">[mich3ll3]</span></p>
+
+    <h2>Liam</h2>
+    <p>Usuario Roblox: <span class="placeholder">[Lukii]</span></p>
+
+    <img src="lineadorada.png" class="decoracion">
+
+    <!-- FECHA -->
+    <p class="label">📅 Fecha:</p>
+    <p>25 de diciembre</p>
+
+    <p class="label">⏰ Hora:</p>
+    <p><span class="placeholder">[3:00 PM]</span></p>
+
+    <!-- LUGAR -->
+    <p class="label">📍 Lugar:</p>
+    <p>Broadhaven – Roblox</p>
+
+    <img src="lineadorada.png" class="decoracion">
+
+    <!-- MADRINAS -->
+    <p class="label">👑 Madrinas de boda:</p>
+    <p><span class="placeholder">[Brianna Fernandez]</span></p>
+    <p><span class="placeholder">[Aracely Mayta]</span></p>
+
+    <!-- MUSICA -->
+    <p class="label">🎶 Música:</p>
+    <p><span class="placeholder">[HOME - BTS]</span>
+    <button onclick="playMusic()">🎵 Música</button>
+
+<audio id="bgMusic" loop>
+  <source src="musicacomun.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function playMusic() {
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.1; // volumen suave
+  music.play();
+}
+</script>
+</p>
+    
+
+    <img src="lineadorada.png" class="decoracion">
+
+    <!-- CRONOMETRO -->
+    <p class="label">⏳ Cuenta regresiva:</p>
+    <div class="countdown">
+      <div class="time-box">
+        <span id="days">00</span>
+        <small>DÍAS</small>
+      </div>
+      <div class="time-box">
+        <span id="hours">00</span>
+        <small>HORAS</small>
+      </div>
+      <div class="time-box">
+        <span id="minutes">00</span>
+        <small>MIN</small>
+      </div>
+      <div class="time-box">
+        <span id="seconds">00</span>
+        <small>SEG</small>
+      </div>
+    </div>
+
+    <!-- VESTIMENTA -->
+    <div class="dresscode">
+      👗🤵 Código de vestimenta<br>
+      Etiqueta · Formal y elegante
+    </div>
+
+    <footer>
+      ✨ Te esperamos para celebrar este día tan especial ✨
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT CRONOMETRO -->
+  <script>
+    const weddingDate = new Date("December 25, 2025 15:00:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+    }, 1000);
+  </script>
+
+
+    </audio>
+
+</body>
+</html>
